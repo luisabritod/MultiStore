@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:multi_store/categories/categories.dart';
-import 'package:multi_store/utilities/category_list.dart';
 import 'package:multi_store/utilities/utilities.dart';
 
 class CategoryView extends StatefulWidget {
@@ -82,30 +81,6 @@ class _CategoryViewState extends State<CategoryView> {
             categoryItem: beauty,
             image: 'assets/images/beauty/beauty',
           ),
-          // const Center(
-          //   child: Text('women'),
-          // ),
-          // const Center(
-          //   child: Text('shoes'),
-          // ),
-          // const Center(
-          //   child: Text('bags'),
-          // ),
-          // const Center(
-          //   child: Text('eletronics'),
-          // ),
-          // const Center(
-          //   child: Text('acessories'),
-          // ),
-          // const Center(
-          //   child: Text('home & garden'),
-          // ),
-          // const Center(
-          //   child: Text('kids'),
-          // ),
-          // const Center(
-          //   child: Text('beauty'),
-          // ),
         ],
       ),
     );

@@ -32,7 +32,7 @@ class _CartScreenState extends State<CartScreen> {
           IconButton(
             icon: const Icon(Icons.delete, color: Colors.black),
             onPressed: () {},
-          )
+          ),
         ],
       ),
       body: Center(
