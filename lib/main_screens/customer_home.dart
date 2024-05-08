@@ -14,9 +14,9 @@ class _CustomerHomeState extends State<CustomerHome> {
   final List<Widget> _tabs = [
     const HomeScreen(),
     const CategoryScreen(),
-    const Center(child: Text('Stores')),
-    const Center(child: Text('Cart')),
-    const Center(child: Text('Profile')),
+    const StorePage(),
+    const CartScreen(),
+    const ProfileScreen(),
   ];
 
   @override
