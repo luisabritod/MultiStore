@@ -1,24 +1,20 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-List<ItemsData> items = [
-  ItemsData(label: 'Men'),
-  ItemsData(label: 'Women'),
-  ItemsData(label: 'Shoes'),
-  ItemsData(label: 'Bags'),
-  ItemsData(label: 'Eletronics'),
-  ItemsData(label: 'Acessories'),
-  ItemsData(label: 'Home & Garden'),
-  ItemsData(label: 'Kids'),
-  ItemsData(label: 'Beauty'),
-];
+import 'package:multi_store/domain/domain.dart';
+import 'package:multi_store/utilities/utilities.dart';
 
 class SideNavigator extends StatefulWidget {
   const SideNavigator({
     super.key,
     required this.size,
+    required this.category,
+    required this.pageController,
   });
 
   final Size size;
+  final CategoryEnum category;
+  final PageController pageController;
 
   @override
   State<SideNavigator> createState() => _SideNavigatorState();
@@ -39,6 +35,9 @@ class _SideNavigatorState extends State<SideNavigator> {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
+              widget.pageController.animateToPage(index,
+                  duration: const Duration(milliseconds: 200),
+                  curve: Curves.bounceInOut);
               for (var element in items) {
                 element.isSelected = false;
               }
@@ -60,13 +59,4 @@ class _SideNavigatorState extends State<SideNavigator> {
       ),
     );
   }
-}
-
-class ItemsData {
-  String label;
-  bool isSelected;
-  ItemsData({
-    required this.label,
-    this.isSelected = false,
-  });
 }
