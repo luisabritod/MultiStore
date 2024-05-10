@@ -7,3 +7,4 @@ export 'profile.dart';
 export 'supplier_home.dart';
 export 'dashboard.dart';
 export 'upload.dart';
+export 'login.dart';

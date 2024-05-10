@@ -16,7 +16,7 @@ class _SupplierHomeState extends State<SupplierHome> {
     const CategoryScreen(),
     const StorePage(),
     const DashboardScreen(),
-    const UploadScreen(),
+    const LoginPage(),
   ];
 
   @override
