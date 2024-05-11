@@ -1,32 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:multi_store/minor_screens/sub_dashboard.dart';
+import 'package:multi_store/dashboard_components/dashboard_components.dart';
 import 'package:multi_store/widgets/vertical_spacing.dart';
 
 List dashboardList = [
   {
     'label': 'My store',
     'icon': Icons.shop,
+    'route': const MyStore(),
   },
   {
     'label': 'Orders',
     'icon': Icons.shop_2_outlined,
+    'route': const Orders(),
   },
   {
     'label': 'Edit Profile',
     'icon': Icons.edit,
+    'route': const EditProfile(),
   },
   {
     'label': 'Manage Products',
     'icon': Icons.settings,
+    'route': const ManageProducts(),
   },
   {
     'label': 'Balance',
     'icon': Icons.attach_money,
+    'route': const Balance(),
   },
   {
     'label': 'Statics',
     'icon': Icons.show_chart,
+    'route': const Statics(),
   },
 ];
 
@@ -55,7 +61,9 @@ class DashboardScreen extends StatelessWidget {
           actions: [
             IconButton(
               icon: const Icon(Icons.logout, color: Colors.black),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, '/welcome_screen');
+              },
             ),
           ]),
       body: Padding(
@@ -70,10 +78,7 @@ class DashboardScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => SubDashboardScreen(
-                                title:
-                                    capitalize(dashboardList[index]['label']),
-                              )));
+                          builder: (context) => dashboardList[index]['route']));
                 },
                 child: Container(
                   decoration: BoxDecoration(

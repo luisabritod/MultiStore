@@ -11,9 +11,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Multi Store',
-      home: SupplierHome(),
+      initialRoute: '/welcome_screen',
+      routes: {
+        '/welcome_screen': (context) => const LoginPage(),
+        '/customer_home': (context) => const CustomerHome(),
+        '/supplier_home': (context) => const SupplierHome(),
+      },
     );
   }
 }

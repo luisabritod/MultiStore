@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:multi_store/main_screens/main_screens.dart';
 import 'package:multi_store/widgets/widgets.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class LoginSuppliersPage extends StatefulWidget {
+  const LoginSuppliersPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginSuppliersPage> createState() => _LoginSuppliersPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginSuppliersPageState extends State<LoginSuppliersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,6 +44,13 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ],
+          ),
+          Text(
+            'Supplier Login',
+            style: TextStyle(
+              color: Colors.grey.shade600,
+              fontSize: 40,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(
@@ -90,7 +97,10 @@ class _LoginPageState extends State<LoginPage> {
                 const VerticalSpacing(20),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/customer_home');
+                    Navigator.pushReplacementNamed(
+                      context,
+                      '/supplier_home',
+                    );
                   },
                   style: ButtonStyle(
                     backgroundColor:
@@ -155,7 +165,7 @@ class _LoginPageState extends State<LoginPage> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const SignUpPage(),
+                            builder: (context) => const SignUpSuppliersPage(),
                           ),
                         );
                       },
@@ -180,7 +190,7 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   children: [
                     Text(
-                      'Are you a supplier?',
+                      'Are you a customer?',
                       style: TextStyle(
                         color: Colors.grey.shade600,
                       ),
@@ -190,7 +200,7 @@ class _LoginPageState extends State<LoginPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const LoginSuppliersPage(),
+                            builder: (context) => const LoginPage(),
                           ),
                         );
                       },

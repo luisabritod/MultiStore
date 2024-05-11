@@ -1,7 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:multi_store/customers_screens/customers_screens/customers_screens.dart/customers_screens.dart';
+import 'package:multi_store/main_screens/main_screens.dart';
 import 'package:multi_store/widgets/widgets.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -111,7 +112,12 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ),
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const CartScreen()));
+                          },
                           child: SizedBox(
                             height: 40,
                             width: MediaQuery.of(context).size.width * 0.2,
@@ -130,7 +136,13 @@ class ProfileScreen extends StatelessWidget {
                       Container(
                         color: const Color(0xff57A39E),
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const CustomersOrders()));
+                          },
                           child: SizedBox(
                             height: 40,
                             width: MediaQuery.of(context).size.width * 0.2,
@@ -155,7 +167,13 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ),
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const CustomersWishlist()));
+                          },
                           child: SizedBox(
                             height: 40,
                             width: MediaQuery.of(context).size.width * 0.2,
@@ -181,7 +199,7 @@ class ProfileScreen extends StatelessWidget {
                     children: [
                       SizedBox(
                         height: 150,
-                        child: Image.asset('assets/images/inapp/logo.jpg'),
+                        child: Image.asset('assets/images/inapp/logo.png'),
                       ),
                       const VerticalSpacing(10),
                       const AccountProfileWidget(
@@ -273,9 +291,13 @@ class ProfileScreen extends StatelessWidget {
                                   thickness: 2,
                                 ),
                               ),
-                              const ListTile(
-                                title: Text('Log out'),
-                                leading: Icon(Icons.logout),
+                              ListTile(
+                                title: const Text('Log out'),
+                                leading: const Icon(Icons.logout),
+                                onTap: () {
+                                  Navigator.pushReplacementNamed(
+                                      context, '/welcome_screen');
+                                },
                               ),
                             ],
                           ),

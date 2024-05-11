@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:multi_store/main_screens/main_screens.dart';
 import 'package:multi_store/widgets/widgets.dart';
 
 class CartScreen extends StatefulWidget {
@@ -52,12 +51,10 @@ class _CartScreenState extends State<CartScreen> {
               child: MaterialButton(
                 minWidth: MediaQuery.of(context).size.width * 0.6,
                 onPressed: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const CustomerHome(),
-                    ),
-                  );
+                  Navigator.canPop(context)
+                      ? Navigator.pop(context)
+                      : Navigator.pushReplacementNamed(
+                          context, '/customer_home');
                 },
                 child: const Text(
                   'Continue shopping',
