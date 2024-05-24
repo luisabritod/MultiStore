@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:multi_store/main_screens/main_screens.dart';
+import 'package:multi_store/auth/auth.dart';
 import 'package:multi_store/widgets/widgets.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class LoginSuppliersPage extends StatefulWidget {
+  const LoginSuppliersPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LoginSuppliersPage> createState() => _LoginSuppliersPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginSuppliersPageState extends State<LoginSuppliersPage> {
+  bool isPasswordVisible = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +46,13 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ],
           ),
+          Text(
+            'Supplier Login',
+            style: TextStyle(
+              color: Colors.grey.shade600,
+              fontSize: 40,
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 70,
@@ -52,8 +60,15 @@ class _LoginPageState extends State<LoginPage> {
             child: Container(
               margin: const EdgeInsets.only(top: 30),
               child: Column(children: [
-                const TextField(
-                  decoration: InputDecoration(
+                TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter your email';
+                    }
+                    return null;
+                  },
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: const InputDecoration(
                       labelText: 'Email',
                       labelStyle: TextStyle(
                         color: Colors.grey,
@@ -69,18 +84,36 @@ class _LoginPageState extends State<LoginPage> {
                       )),
                 ),
                 const VerticalSpacing(20),
-                const TextField(
+                TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter your password';
+                    }
+                    return null;
+                  },
                   decoration: InputDecoration(
+                    suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            isPasswordVisible = !isPasswordVisible;
+                          });
+                        },
+                        icon: Icon(
+                          isPasswordVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
+                          color: const Color(0xff56A29E),
+                        )),
                     labelText: 'Password',
-                    labelStyle: TextStyle(
+                    labelStyle: const TextStyle(
                       color: Colors.grey,
                     ),
-                    focusedBorder: UnderlineInputBorder(
+                    focusedBorder: const UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.grey,
                       ),
                     ),
-                    prefixIcon: Icon(
+                    prefixIcon: const Icon(
                       Icons.key_rounded,
                       color: Colors.grey,
                     ),
@@ -90,7 +123,10 @@ class _LoginPageState extends State<LoginPage> {
                 const VerticalSpacing(20),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/customer_home');
+                    Navigator.pushReplacementNamed(
+                      context,
+                      '/supplier_home',
+                    );
                   },
                   style: ButtonStyle(
                     backgroundColor:
@@ -155,7 +191,7 @@ class _LoginPageState extends State<LoginPage> {
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const SignUpPage(),
+                            builder: (context) => const SignUpSuppliersPage(),
                           ),
                         );
                       },
@@ -180,7 +216,7 @@ class _LoginPageState extends State<LoginPage> {
                 Row(
                   children: [
                     Text(
-                      'Are you a supplier?',
+                      'Are you a customer?',
                       style: TextStyle(
                         color: Colors.grey.shade600,
                       ),
@@ -190,7 +226,7 @@ class _LoginPageState extends State<LoginPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const LoginSuppliersPage(),
+                            builder: (context) => const LoginPage(),
                           ),
                         );
                       },

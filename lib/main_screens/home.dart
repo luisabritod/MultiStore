@@ -18,40 +18,46 @@ class _HomeScreenState extends State<HomeScreen> {
           elevation: 0,
           backgroundColor: Colors.white,
           title: const FakeSearch(),
-          bottom: const TabBar(
-            isScrollable: true,
-            indicatorColor: Color(0xff57A39E),
-            indicatorSize: TabBarIndicatorSize.tab,
-            indicatorWeight: 6,
-            tabs: [
-              RepeatedTab(
-                label: 'Men',
+          bottom: const PreferredSize(
+            preferredSize: Size.fromHeight(kToolbarHeight),
+            child: Padding(
+              padding: EdgeInsets.only(left: 0),
+              child: TabBar(
+                isScrollable: true,
+                indicatorColor: Color(0xff57A39E),
+                indicatorSize: TabBarIndicatorSize.tab,
+                indicatorWeight: 6,
+                tabs: [
+                  RepeatedTab(
+                    label: 'Men',
+                  ),
+                  RepeatedTab(
+                    label: 'Women',
+                  ),
+                  RepeatedTab(
+                    label: 'Shoes',
+                  ),
+                  RepeatedTab(
+                    label: 'Bags',
+                  ),
+                  RepeatedTab(
+                    label: 'Eletronics',
+                  ),
+                  RepeatedTab(
+                    label: 'Acessories',
+                  ),
+                  RepeatedTab(
+                    label: 'Home & Garden',
+                  ),
+                  RepeatedTab(
+                    label: 'Kids',
+                  ),
+                  RepeatedTab(
+                    label: 'Beauty',
+                  ),
+                ],
               ),
-              RepeatedTab(
-                label: 'Women',
-              ),
-              RepeatedTab(
-                label: 'Shoes',
-              ),
-              RepeatedTab(
-                label: 'Bags',
-              ),
-              RepeatedTab(
-                label: 'Eletronics',
-              ),
-              RepeatedTab(
-                label: 'Acessories',
-              ),
-              RepeatedTab(
-                label: 'Home & Garden',
-              ),
-              RepeatedTab(
-                label: 'Kids',
-              ),
-              RepeatedTab(
-                label: 'Beauty',
-              ),
-            ],
+            ),
           ),
         ),
         body: const TabBarView(
