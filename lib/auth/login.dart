@@ -1,3 +1,6 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:multi_store/auth/auth.dart';
 import 'package:multi_store/widgets/widgets.dart';
@@ -155,15 +158,23 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       ExternalLoginWidget(
-                        function: () {},
+                        function: () {
+                          print('foi chamado na teoria google');
+                        },
                         image: 'google',
                       ),
                       ExternalLoginWidget(
-                        function: () {},
+                        function: () {
+                          print('foi chamado na teoria face');
+                        },
                         image: 'facebook',
                       ),
                       ExternalLoginWidget(
-                        function: () {},
+                        function: () async {
+                          await FirebaseAuth.instance.signInAnonymously();
+                          Navigator.pushReplacementNamed(
+                              context, '/customer_home');
+                        },
                         image: 'guest',
                       ),
                     ],

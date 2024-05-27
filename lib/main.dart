@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:multi_store/auth/auth.dart';
+import 'package:multi_store/firebase_options.dart';
 import 'package:multi_store/main_screens/main_screens.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } catch (e) {
+    // ignore: avoid_print
+    print('Error at initialization of firebase.');
+  }
+
   runApp(const MyApp());
 }
 

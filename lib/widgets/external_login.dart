@@ -8,15 +8,13 @@ class ExternalLoginWidget extends StatelessWidget {
     required this.image,
   });
 
-  final Function function;
+  final VoidCallback function;
   final String image;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        function;
-      },
+      onTap: function,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
