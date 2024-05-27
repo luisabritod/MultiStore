@@ -1,8 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, use_build_context_synchronously
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:multi_store/customers_screens/customers_screens/customers_screens.dart/customers_screens.dart';
 import 'package:multi_store/main_screens/main_screens.dart';
+import 'package:multi_store/utilities/utilities.dart';
 import 'package:multi_store/widgets/widgets.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -294,9 +296,20 @@ class ProfileScreen extends StatelessWidget {
                               ListTile(
                                 title: const Text('Log out'),
                                 leading: const Icon(Icons.logout),
-                                onTap: () {
-                                  Navigator.pushReplacementNamed(
-                                      context, '/welcome_screen');
+                                onTap: () async {
+                                  LogOutAlertDialog.showAlertDialog(
+                                    context: context,
+                                    title: 'Log out',
+                                    content:
+                                        'Are you sure you want to log out?',
+                                    onNo: () => Navigator.pop(context),
+                                    onYes: () async {
+                                      await FirebaseAuth.instance.signOut();
+                                      Navigator.pop(context);
+                                      Navigator.pushReplacementNamed(
+                                          context, '/welcome_screen');
+                                    },
+                                  );
                                 },
                               ),
                             ],

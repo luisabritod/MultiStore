@@ -14,6 +14,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool isPasswordVisible = false;
+  bool isProcessing = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -169,14 +170,19 @@ class _LoginPageState extends State<LoginPage> {
                         },
                         image: 'facebook',
                       ),
-                      ExternalLoginWidget(
-                        function: () async {
-                          await FirebaseAuth.instance.signInAnonymously();
-                          Navigator.pushReplacementNamed(
-                              context, '/customer_home');
-                        },
-                        image: 'guest',
-                      ),
+                      isProcessing
+                          ? const CircularProgressIndicator()
+                          : ExternalLoginWidget(
+                              function: () async {
+                                setState(() {
+                                  isProcessing = true;
+                                });
+                                await FirebaseAuth.instance.signInAnonymously();
+                                Navigator.pushReplacementNamed(
+                                    context, '/customer_home');
+                              },
+                              image: 'guest',
+                            ),
                     ],
                   ),
                   const VerticalSpacing(40),
